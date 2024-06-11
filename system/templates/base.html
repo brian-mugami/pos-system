@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title%} {%endblock%}</title>
+</head>
+<body>
+{% if user.is_authenticated %}
+<a href="{{url_for('auth_blp.logout')}}">
+    <button class="btn btn-danger">Logout</button>
+</a>
+{% else %}
+<a href="{{url_for('auth_blp.login')}}">
+    <button class="btn btn-success"> Login</button>
+</a>
+{% endif %}
+{% block content %}
+{% endblock%}
+</body>
+</html>

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content%}
+<h3 align="center"> Welcome</h3>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.phone_no.label (class="form-label", id="label")}}
+    {{ form.phone_no(class="form-control") }}
+    {{ form.password.label (class="form-label", id="label")}}
+    {{ form.password(class="form-control") }}
+    <br>
+    {{ form.submit(class="btn btn-dark mb-3") }}
+    <a href="{{url_for('auth_blp.forgot')}}">
+        Forgot Password?
+    </a>
+    <br>
+</form>
+{% endblock %}

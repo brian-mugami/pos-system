@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{%block title%} 404 {%endblock%}
+{% block content%}
+<h3>Register</h3>
+<form method="post">
+    {{ form.hidden_tag() }}
+    {{ form.email.label (class="form-label", id="label")}}
+    {{ form.email(class="form-control") }}
+    {{ form.phone_no.label (class="form-label", id="label")}}
+    {{ form.phone_no(class="form-control") }}
+    {{ form.password.label (class="form-label", id="label")}}
+    {{ form.password(class="form-control") }}
+    {{ form.confirm_password.label (class="form-label", id="label")}}
+    {{ form.confirm_password(class="form-control") }}
+    <br>
+    {{ form.submit(class="btn btn-dark mb-3") }}
+    <br>
+</form>
+{% endblock %}

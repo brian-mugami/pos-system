@@ -1,0 +1,8 @@
+flask-cors
+flask
+flask-login
+flask-migrate
+flask-sqlalchemy
+flask-wtf
+passlib
+psycopg2
