@@ -11,3 +11,4 @@ class AuditModel(db.Model):
     user_update_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
     user = db.relationship("UserModel", back_populates="audit")
+

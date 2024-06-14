@@ -23,6 +23,9 @@ class UserModel(db.Model, UserMixin):
     active_date = db.Column(db.DateTime, default=datetime.utcnow())
 
     audit = db.relationship("AuditModel", back_populates="user", lazy="dynamic")
+    organizations = db.relationship("OrganizationModel", back_populates="user", lazy="dynamic")
+    inventories = db.relationship("InventoryModel", back_populates="user", lazy="dynamic")
+    sub_inventories = db.relationship("SubInventoryModel", back_populates="user",lazy="dynamic")
     __table_args__ = (
         db.UniqueConstraint('phone_no', 'email', 'first_name', 'last_name'),
     )
@@ -40,6 +43,7 @@ class UserModel(db.Model, UserMixin):
     @classmethod
     def find_by_phone_no(cls, phone_no):
         return cls.query.filter_by(phone_no=phone_no).first()
+
     def check_pwd(self, password):
         is_password_correct = pbkdf2_sha256.verify(password, self.password)
         return is_password_correct
