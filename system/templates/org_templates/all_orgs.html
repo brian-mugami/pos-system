@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Organizations{% endblock %}
+
+{% block content %}
+<h1>All Organizations</h1>
+<a href="{{url_for('org_blp.create_orgs')}}">Organization Creation</a>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Creation Date</th>
+            <th>Active Date</th>
+            <th>Is Active</th>
+            <th>Location</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for org in orgs %}
+        <tr>
+            <td><a href="{{url_for('org_blp.create_orgs')}}">{{ org.name }}</a></td>
+            <td>{{ org.description }}</td>
+            <td>{{ org.creation_date }}</td>
+            <td>{{ org.active_date }}</td>
+            <td>{{ org.is_active }}</td>
+            <td>{{ org.location }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

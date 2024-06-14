@@ -14,8 +14,8 @@ class OrganizationModel(db.Model):
     location = db.Column(db.String(256), nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
-    user = db.relationship("UserModel", back_populates="organization")
-    inventory = db.relationship("InventoryModel", back_populates="organization", cascade="all, delete-orphan",
+    user = db.relationship("UserModel", back_populates="organizations")
+    inventory = db.relationship("InventoryModel", back_populates="organization",
                                 lazy="dynamic", secondary="organization_structure")
 
     @classmethod
@@ -48,7 +48,7 @@ class InventoryModel(db.Model):
 
     user = db.relationship("UserModel", back_populates="inventories")
     organization = db.relationship("OrganizationModel", back_populates="inventory", secondary="organization_structure")
-    sub_inventory = db.relationship("SubInventoryModel", back_populates="inventory", cascade="all, delete-orphan",
+    sub_inventory = db.relationship("SubInventoryModel", back_populates="inventory",
                                     lazy="dynamic", secondary="organization_structure")
     __table_args__ = (
         db.UniqueConstraint('name', 'organization_id'),
@@ -85,7 +85,7 @@ class SubInventoryModel(db.Model):
     inventory_id = db.Column(db.Integer, db.ForeignKey("inventory.id"), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
-    user = db.relationship("UserModel", back_populates="organization")
+    user = db.relationship("UserModel", back_populates="sub_inventories")
     inventory = db.relationship("InventoryModel", back_populates="sub_inventory", secondary="organization_structure")
 
     __table_args__ = (

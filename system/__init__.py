@@ -24,9 +24,10 @@ def create_app():
     login_manager.login_view = 'auth_blp.login'
     login_manager.init_app(app)
     from .models import UserModel
-    from .routes import auth_blp,home_blp
+    from .routes import auth_blp, home_blp, org_blp
     app.register_blueprint(auth_blp, url_prefix="/")
     app.register_blueprint(home_blp, url_prefix="/dash")
+    app.register_blueprint(org_blp, url_prefix="/org")
 
     @login_manager.user_loader
     def load_user(id):

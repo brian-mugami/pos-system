@@ -9,10 +9,14 @@
 <a href="{{url_for('auth_blp.logout')}}">
     <button class="btn btn-danger">Logout</button>
 </a>
+<ul>
+    <li><a href="{{url_for('org_blp.all_orgs')}}">Organizations</a></li>
+</ul>
 {% else %}
 <a href="{{url_for('auth_blp.login')}}">
     <button class="btn btn-success"> Login</button>
 </a>
+
 {% endif %}
 {% block content %}
 {% endblock%}
